@@ -1,0 +1,42 @@
+{
+    "pacientes": [
+        {
+            "cedula": 1025531751,
+            "nombre": "Sergio",
+            "apellido": "Blanco",
+            "evoluciones": [
+                {
+                    "fecha": "2025-10-31",
+                    "hora": "23:40:00",
+                    "contenido": "asdhjkashdkljashdkjashkjldhaskljdhkalsjd",
+                    "retraso": {
+                        "dias": 0,
+                        "horas": 0,
+                        "minutos": 0
+                    }
+                },
+                {
+                    "fecha": "2025-10-17",
+                    "hora": "22:49:00",
+                    "contenido": "brandon es re gei y el gordo tambioen",
+                    "retraso": {
+                        "dias": 2,
+                        "horas": 21,
+                        "minutos": 17
+                    }
+                }
+            ]
+        }
+    ],
+    "total_strikes": 2,
+    "strikes": [
+        {
+            "razon": "Evolución subida después de las 24 horas",
+            "fecha": "2025-10-17"
+        },
+        {
+            "razon": "Evolución modificada fuera de tiempo",
+            "fecha": "2025-10-17"
+        }
+    ]
+}

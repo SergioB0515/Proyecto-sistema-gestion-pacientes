@@ -1,0 +1,58 @@
+2025-10-20 19:26:01 - INFO - Usuario accedió a página principal
+2025-10-20 19:26:08 - INFO - Paciente creado: Sergio Blanco
+2025-10-20 19:26:08 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:26:32 - WARNING - Strike por retraso en evolución
+2025-10-20 19:26:32 - INFO - Evolución subida para paciente 1025531751
+2025-10-20 19:26:32 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:26:43 - WARNING - Strike agregado por similitud local: 100.0%
+2025-10-20 19:26:43 - WARNING - Strike por retraso en evolución
+2025-10-20 19:26:43 - INFO - Evolución subida para paciente 1025531751
+2025-10-20 19:26:43 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:26:46 - INFO - Usuario accedió a página principal
+2025-10-20 19:26:54 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:26:57 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:34:40 - INFO - Usuario accedió a página principal
+2025-10-20 19:34:47 - INFO - Paciente creado: Sergio Blanco
+2025-10-20 19:34:47 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:35:06 - INFO - Evolución subida para paciente 1025531751
+2025-10-20 19:35:06 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:35:14 - INFO - Usuario accedió a página principal
+2025-10-20 19:35:29 - INFO - Usuario accedió a página principal
+2025-10-20 19:36:44 - INFO - Usuario accedió a página principal
+2025-10-20 19:36:48 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:36:53 - INFO - Paciente creado: Sergio Blanco
+2025-10-20 19:36:53 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:36:56 - INFO - Usuario accedió a página principal
+2025-10-20 19:39:13 - INFO - Usuario accedió a página principal
+2025-10-20 19:39:14 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:39:20 - INFO - Paciente creado: Sergio Blanco
+2025-10-20 19:39:20 - INFO - Guardado automático exitoso
+2025-10-20 19:39:20 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:39:33 - INFO - Evolución subida para paciente 1025531751
+2025-10-20 19:39:33 - INFO - Guardado automático exitoso
+2025-10-20 19:39:33 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:39:49 - INFO - Usuario accedió a página principal
+2025-10-20 19:41:10 - INFO - Usuario accedió a página principal
+2025-10-20 19:47:56 - INFO - Usuario accedió a página principal
+2025-10-20 19:49:51 - WARNING - Strike por retraso en evolución
+2025-10-20 19:49:51 - INFO - Evolución subida para paciente 1025531751
+2025-10-20 19:49:51 - INFO - Guardado automático exitoso
+2025-10-20 19:49:51 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:51:05 - WARNING - Strike agregado por similitud local: 98.63%
+2025-10-20 19:51:09 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:51:10 - INFO - Usuario accedió a página principal
+2025-10-20 19:51:11 - INFO - Usuario consultó lista de pacientes
+2025-10-20 19:51:13 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 19:53:28 - INFO - Usuario accedió a página principal
+2025-10-20 20:05:32 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 20:05:34 - INFO - Usuario accedió a página principal
+2025-10-20 20:05:39 - INFO - Usuario consultó lista de pacientes
+2025-10-20 20:05:45 - INFO - Paciente editado: 1025531751
+2025-10-20 20:05:45 - INFO - Guardado automático exitoso
+2025-10-20 20:05:45 - INFO - Usuario consultó lista de pacientes
+2025-10-20 20:05:51 - INFO - Usuario consultó lista de pacientes
+2025-10-20 20:05:53 - INFO - Usuario consultó paciente: 1025531751
+2025-10-20 20:06:00 - WARNING - Strike por modificación fuera de tiempo
+2025-10-20 20:06:00 - INFO - Evolución editada para paciente 1025531751
+2025-10-20 20:06:00 - INFO - Guardado automático exitoso
+2025-10-20 20:06:00 - INFO - Usuario consultó paciente: 1025531751

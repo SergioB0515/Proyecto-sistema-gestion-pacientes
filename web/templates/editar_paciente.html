@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Paciente{% endblock %}
+
+{% block content %}
+<h2>Editar Paciente</h2>
+
+{% if error %}
+<div class="error-message">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST" action="{{ url_for('routes.editar_paciente', cedula=paciente.cedula) }}">
+    <div>
+        <label>Cédula:</label>
+        <input type="text" value="{{ paciente.cedula }}" disabled>
+        <small>No se puede modificar la cédula</small>
+    </div>
+    
+    <div>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="{{ paciente.nombre }}" required>
+    </div>
+    
+    <div>
+        <label>Apellido:</label>
+        <input type="text" name="apellido" value="{{ paciente.apellido }}" required>
+    </div>
+    
+    <div>
+        <button type="submit">Guardar Cambios</button>
+        <a href="{{ url_for('routes.listar_pacientes') }}">Cancelar</a>
+    </div>
+</form>
+
+{% endblock %}

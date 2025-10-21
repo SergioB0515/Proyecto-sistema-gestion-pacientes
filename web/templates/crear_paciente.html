@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Crear Paciente{% endblock %}
+
+{% block content %}
+<h2>Crear Nuevo Paciente</h2>
+
+{% if error %}
+<div class="error-message">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST">
+<form method="POST" action="{{ url_for('routes.crear_paciente') }}">
+    <div>
+        <label>Cédula:</label>
+        <input type="text" name="cedula" placeholder="10 dígitos" required>
+    </div>
+    
+    <div>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" placeholder="Nombre" required>
+    </div>
+    
+    <div>
+        <label>Apellido:</label>
+        <input type="text" name="apellido" placeholder="Apellido" required>
+    </div>
+    
+    <button type="submit">Crear Paciente</button>
+    <a href="{{ url_for('routes.listar_pacientes') }}">Cancelar</a>
+</form>
+
+{% endblock %}

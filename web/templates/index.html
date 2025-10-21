@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Sistema de Evoluciones{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Dashboard</h2>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Pacientes</h3>
+            <p class="stat-number">{{ pacientes }}</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Evoluciones</h3>
+            <p class="stat-number">{{ evoluciones }}</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Strikes</h3>
+            <p class="stat-number">{{ strikes }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ paciente.nombre }} {{ paciente.apellido }}{% endblock %}
+
+{% block content %}
+<h2>{{ paciente.nombre }} {{ paciente.apellido }}</h2>
+<p><strong>Cédula:</strong> {{ paciente.cedula }}</p>
+
+<h3>Evoluciones</h3>
+
+{% if paciente.evoluciones %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Contenido</th>
+            <th>Retraso</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ev in paciente.evoluciones %}
+            <tr>
+                <td>{{ ev.fecha }}</td>
+                <td>{{ ev.hora }}</td>
+                <td>{{ ev.contenido[:50] }}...</td>
+                <td>{{ ev.retraso.dias }}d {{ ev.retraso.horas }}h {{ ev.retraso.minutos }}m</td>
+                <td>
+                    <a href="{{ url_for('routes.editar_evolucion', cedula=paciente.cedula, indice=loop.index0) }}">Editar</a>
+                    <a href="{{ url_for('routes.eliminar_evolucion', cedula=paciente.cedula, indice=loop.index0) }}" 
+                    onclick="return confirm('¿Estás seguro?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay evoluciones registradas</p>
+{% endif %}
+{% endblock %}

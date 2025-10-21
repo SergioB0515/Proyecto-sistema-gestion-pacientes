@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Pacientes{% endblock %}
+
+{% block content %}
+<h2>Lista de Pacientes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Evoluciones</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+            <td>{{ paciente.cedula }}</td>
+            <td>{{ paciente.nombre }}</td>
+            <td>{{ paciente.apellido }}</td>
+            <td>{{ paciente.evoluciones|length }}</td>
+            <td>
+                <a href="{{ url_for('routes.ver_paciente', cedula=paciente.cedula) }}">Ver</a>
+            </td>
+            <td>
+                <a href="{{ url_for('routes.ver_paciente', cedula=paciente.cedula) }}">Ver</a>
+                <a href="{{ url_for('routes.editar_paciente', cedula=paciente.cedula) }}">Editar</a>
+                <a href="{{ url_for('routes.eliminar_paciente', cedula=paciente.cedula) }}" 
+                onclick="return confirm('¿Eliminar paciente?')">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

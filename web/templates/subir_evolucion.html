@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Subir Evolución{% endblock %}
+
+{% block content %}
+<h2>Subir Evolución</h2>
+
+{% if error %}
+<div class="error-message">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST">
+<form method="POST" action="{{ url_for('routes.subir_evolucion') }}">
+    <div>
+    <label>Paciente:</label>
+    <select name="cedula" required>
+        <option value="">-- Selecciona un paciente --</option>
+        {% for cedula, paciente in pacientes.items() %}
+            <option value="{{ cedula }}">
+                {{ paciente.nombre }} {{ paciente.apellido }}
+            </option>
+        {% endfor %}
+    </select>
+    </div>
+    <div>
+        <label>Fecha:</label>
+        <input type="date" name="fecha" required>
+    </div>
+    <div>
+        <label>Hora:</label>
+        <input type="time" name="hora" required>
+    </div>
+    <div>
+        <label>Contenido:</label>
+        <textarea name="contenido" placeholder="Describa la evolución" required></textarea>
+    </div>
+    <div>
+        <button type="submit">Subir Evolución</button>
+        <a href="{{ url_for('routes.listar_pacientes') }}">Cancelar</a>
+    </div>
+</form>
+
+{% endblock %}
