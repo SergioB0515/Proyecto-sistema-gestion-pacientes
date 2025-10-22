@@ -93,7 +93,8 @@ def crear_paciente():
 def subir_evolucion():
     """Subir una evolución"""
     from analisis import verificar_similitud_al_subir, verificar_similitud_global
-
+    from utils import validar_fecha_evolucion, validar_contenido_evolucion
+    
     reg = current_app.reg
     
     if request.method == 'GET':
@@ -106,16 +107,31 @@ def subir_evolucion():
             hora_str = request.form.get('hora')
             contenido = request.form.get('contenido')
             
+            # Convertir tipos
             fecha = datetime.strptime(fecha_str, "%Y-%m-%d").date()
             hora = datetime.strptime(hora_str, "%H:%M").time()
             
+            # Obtener paciente
             p = reg.obtener_paciente(cedula)
             if p is None:
                 return render_template('subir_evolucion.html',
                                      pacientes=reg.pacientes,
                                      error="Paciente no encontrado")
             
-            # Verificar similitud local
+            # VALIDACIONES (primero validar antes de verificar similitud)
+            valido, error = validar_fecha_evolucion(fecha)
+            if not valido:
+                return render_template('subir_evolucion.html',
+                                     pacientes=reg.pacientes,
+                                     error=error)
+            
+            valido, error = validar_contenido_evolucion(contenido)
+            if not valido:
+                return render_template('subir_evolucion.html',
+                                     pacientes=reg.pacientes,
+                                     error=error)
+            
+            # VERIFICAR SIMILITUD LOCAL
             hay_similitud, porcentaje, ev_similar = verificar_similitud_al_subir(
                 contenido,
                 p.evoluciones,
@@ -130,7 +146,7 @@ def subir_evolucion():
                 })
                 logger.warning(f"Strike agregado por similitud local: {porcentaje}%")
             
-            # Verificar similitud global
+            # VERIFICAR SIMILITUD GLOBAL
             hay_similitud_global, porcentaje_global, paciente_similar, ev_similar_global = verificar_similitud_global(
                 contenido,
                 reg,
@@ -145,42 +161,30 @@ def subir_evolucion():
                     "fecha": str(fecha)
                 })
                 logger.warning(f"Strike crítico: similitud global {porcentaje_global}%")
-            fecha = datetime.strptime(fecha_str, "%Y-%m-%d").date()
-            hora = datetime.strptime(hora_str, "%H:%M").time()
-            valido, error = validar_fecha_evolucion(fecha)
-            if not valido:
-                return render_template('subir_evolucion.html',
-                                    pacientes=reg.pacientes,
-                                    error=error)
-            valido, error = validar_contenido_evolucion(contenido)
-            if not valido:
-                return render_template('subir_evolucion.html',
-                                    pacientes=reg.pacientes,
-                                    error=error)
-                        # Crear evolución
+            
+            # CREAR Y GUARDAR EVOLUCIÓN
             ev = evolucion(fecha, hora, contenido)
             p.agregar_evolucion(ev)
             
-            # Verificar retraso
+            # VERIFICAR RETRASO
             if ev.es_tarde():
                 reg.total_strikes += 1
                 reg.strikes.append({
                     "razon": "Evolución subida después de las 24 horas",
                     "fecha": str(fecha)
                 })
-                logger.warning(f"Strike por retraso en evolución")
+                logger.warning("Strike por retraso en evolución")
             
             logger.info(f"Evolución subida para paciente {cedula}")
             guardar_automatico()
+            
             return redirect(url_for('routes.ver_paciente', cedula=cedula))
         
         except Exception as e:
             logger.error(f"Error al subir evolución: {e}")
-            guardar_automatico()
             return render_template('subir_evolucion.html',
                                  pacientes=reg.pacientes,
                                  error=str(e))
-  
 @routes_bp.route('/eliminar-evolucion/<int:cedula>/<int:indice>')
 def eliminar_evolucion(cedula, indice):
     """Elimina una evolución"""
@@ -220,13 +224,13 @@ def eliminar_paciente(cedula):
         return f"Error: {e}", 400
     
 def guardar_automatico():
-    """Guarda automáticamente después de operaciones"""
-    from archivos import guardar_json
+    """Guarda automáticamente en PostgreSQL después de operaciones"""
+    from persistencia_db import guardar_registro_db
     try:
-        guardar_json(current_app.reg)
-        logger.info("Guardado automático exitoso")
+        guardar_registro_db(current_app.reg)
+        logger.info("Guardado automático en PostgreSQL exitoso")
     except Exception as e:
-        logger.error(f"Error en guardado automático: {e}")
+        logger.error(f"Error en guardado automático PostgreSQL: {e}")
 @routes_bp.route('/editar-paciente/<int:cedula>', methods=['GET', 'POST'])
 def editar_paciente(cedula):
     """Editar un paciente"""

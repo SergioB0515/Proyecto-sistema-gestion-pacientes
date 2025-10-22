@@ -1,0 +1,6 @@
+2025-10-22 10:46:58 - INFO - Usuario accedió a página principal
+2025-10-22 10:47:02 - INFO - Usuario consultó lista de pacientes
+2025-10-22 10:50:01 - INFO - Usuario accedió a página principal
+2025-10-22 10:50:11 - ERROR - Error al crear paciente: Paciente ya registrado.
+2025-10-22 15:20:13 - INFO - Usuario accedió a página principal
+2025-10-22 15:20:15 - INFO - Usuario consultó lista de pacientes

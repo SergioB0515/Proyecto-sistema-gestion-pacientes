@@ -1,0 +1,18 @@
+# Archivos con credenciales
+.env
+
+# Cache de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+logs/
+*.log
+
+# Reportes generados
+reportes/
+
+# Datos locales
+datos.json
+datos.xlsx
